@@ -21,8 +21,8 @@ import matheval
 # initialize new mathevel object
 m=matheval.matheval()
 # basic evaluation
-result=m.evaluate('2+2') # returns 4
-print(result)
+result=m.evaluate('2+2')
+print(result) # returns 4
 # supports: order of operation, parenthese, negation, and built-in functions
 result=m.evaluate('-8(5/2)^2*(1-sqrt(4))-8')
 print(result) # returns 42
