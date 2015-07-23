@@ -1,7 +1,7 @@
 # matheval
 Python class to evaluate basic ASCII math syntax. This is a port from a PHP
 project to Python. The project can be found here:
-https://github.com/Itangalo/evalmath.class.php
+https://github.com/Itangalo/evalmath.class.php.
 That project is originally based on code written by Miles Kaufmann. Miles
 Kaufmann is in no way affiliated with this project.
 
