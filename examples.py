@@ -18,7 +18,7 @@ funcs()
 
 # import matheval module
 import matheval
-# initialize new mathevel class
+# initialize new mathevel object
 m=matheval.matheval()
 # basic evaluation
 result=m.evaluate('2+2')
