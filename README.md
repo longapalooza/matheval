@@ -5,10 +5,10 @@ Python class to evaluate basic ASCII math syntax.
 This class is intended to be used to evaluate math expressions provided in an
 ASCII math format. It is particularly useful when creating an application that
 accepts user provided math expressions. The user simply provides a math
-expression in a commonly written format (i.e. sin(x) or 2*sqrt(x^3.5)) and the
+expression in a commonly written format (i.e. sin(x) or 2\*sqrt(x^3.5)) and the
 class evaluates the expression. The advantage of doing this is that it does not
 require the user to be familiar with python's math notation (i.e. math.sin(x)
-or 2*math.sqrt(math.pow(x,3.5))). The class allows for variable and function
+or 2\*math.sqrt(math.pow(x,3.5))). The class allows for variable and function
 assignment. Methods included in the class are:
   evaluate(expr)
     Evaluates the expr and returns the result. If the expression is a function
