@@ -367,7 +367,7 @@ class matheval:
         return stack.pop()
 
     def vars(self):
-        output=self.v
+        output=dict(self.v)
         del output['e']
         del output['pi']
         return output
