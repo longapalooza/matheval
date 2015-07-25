@@ -40,9 +40,9 @@ class matheval:
 
     def evaluate(self, expr):
         expr=expr.strip()
-        matches=re.search(r'^\s*([a-zA-Z]\w*)\s*=\s*(.+)$', expr)
+        matches=re.search(r'^\s*([a-zA-Z]\w*)\s*=\s*(.+)$', str(expr))
         matches2=re.search(r'^\s*([a-zA-Z]\w*)\s*\(\s*([a-zA-Z]\w*(?:\s*,\s*'\
-                            '[a-zA-Z]\w*)*)\s*\)\s*=\s*(.+)$', expr)
+                            '[a-zA-Z]\w*)*)\s*\)\s*=\s*(.+)$', str(expr))
         # is it a variable assignment?
         if matches:
             # make sure we're not assigning to a constant
@@ -76,7 +76,7 @@ class matheval:
             i=0
             while i<len(stack):
                 token=stack[i]
-                m=re.search(r'^[a-zA-Z]\w*$', token)
+                m=re.search(r'^[a-zA-Z]\w*$', str(token))
                 if m and (token not in args):
                     if token in self.v:
                         stack[i]=self.v[token]
@@ -120,7 +120,7 @@ class matheval:
         # we use this in syntax-checking the expression
         # and determining when a - is a negation
         expecting_op=False
-        matches=re.search(r'[^\w\s+*^\/()\.,-]', expr)
+        matches=re.search(r'[^\w\s+*^\/()\.,-]', str(expr))
         # make sure the characters are all good
         if matches:
             print('Illegal character '+matches.group(1)+'.')
@@ -132,7 +132,7 @@ class matheval:
             # find out if we're currently at the beginning of a
             # number/variable/function/parenthesis/operand
             match=re.search(r'^([a-zA-Z]\w*\(?|\d+(?:\.\d*)?|\.\d+|\()',
-                            expr[index:])
+                            str(expr[index:]))
             # is it a negation instead of a minus?
             if op=='-' and not expecting_op:
                 # put a negation on the stack
@@ -176,7 +176,7 @@ class matheval:
                     o2=stack.pop()
                 # did we just close a function?
                 if stack.last(2):
-                    matches=re.search(r'^([a-zA-Z]\w*)\($',stack.last(2))
+                    matches=re.search(r'^([a-zA-Z]\w*)\($', str(stack.last(2)))
                 else:
                     matches=False
                 if matches:
@@ -215,7 +215,7 @@ class matheval:
                     o2=stack.pop()
                 # make sure there was a function
                 if stack.last(2):
-                    matches=re.search(r'^([a-zA-Z]\w*)\($', stack.last(2))
+                    matches=re.search(r'^([a-zA-Z]\w*)\($', str(stack.last(2)))
                 else:
                     matches=False
                 if not matches:
@@ -236,7 +236,7 @@ class matheval:
                 expecting_op=True
                 val=match.group(1)
                 # may be funciton, or variable with implicit multiplication
-                matches=re.search(r'^([a-zA-Z]\w*)\($', val)
+                matches=re.search(r'^([a-zA-Z]\w*)\($', str(val))
                 if matches:
                     # it's a function
                     if (matches.group(1) in self.fb) or\
@@ -291,7 +291,7 @@ class matheval:
         for token in tokens:
             # if the token is a binary operator, pop two values off the stack,
             # do the operation, and push the result back on
-            matches=re.search(r'^([a-zA-Z]\w*)\($', token)
+            matches=re.search(r'^([a-zA-Z]\w*)\($', str(token))
             if token in ['+', '-', '*', '/', '^']:
                 op2=stack.pop()
                 op1=stack.pop()
