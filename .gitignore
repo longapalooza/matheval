@@ -41,3 +41,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# User defined directories and files to ignore
+__pychache__
+test.py
+.gitignore
+.gitattributes
